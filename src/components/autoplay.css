@@ -1,0 +1,11 @@
+.toggle_dot {
+    top: 2px;
+    left: 3.5px;
+    transition: all 0.3s ease-in-out;
+}
+
+.toggle_dot.active {
+    transform: translateX(100%);
+    left: 5px;
+    background-color: #34D399;
+}
