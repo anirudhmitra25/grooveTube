@@ -7,7 +7,7 @@ const Header = () => {
       <Link to={`/`}>
         {" "}
         <h1 className="text-xl font-bold text-gray-300 font-mono">
-          GrooveTube
+          grooveTube
         </h1>
       </Link>
     </header>
