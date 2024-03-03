@@ -1,70 +1,53 @@
-# Getting Started with Create React App
+# GrooveTube - Video App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to GrooveTube, a React-based video app that allows you to seamlessly enjoy and control your favorite videos. GrooveTube combines the power of React, Redux, React Icons, Framer, and Tailwind CSS to create a smooth and interactive video-watching experience.
 
-## Available Scripts
+## Website
 
-In the project directory, you can run:
+[Visit GrooveTube](https://groovetube.netlify.app)
 
-### `npm start`
+## Local Setup
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Follow these steps to run GrooveTube locally on your machine:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/anirudhmitra25/grooveTube.git
+2. Navigate to project directory:
+   ```bash
+   cd groovetube
+3. Install dependencies using npm or yarn:
+   ```bash
+   npm install
+4. Run the development server:
+   ```bash
+   npm start
+5. Open your browser and visit http://localhost:3000 to view GrooveTube.
 
-### `npm test`
+## Libraries Used
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. **React**: A JavaScript library for building user interfaces.
 
-### `npm run build`
+2. **Redux**: A state management library for managing the application's global state.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+3. **React Icons**: A set of customizable SVG icons for React projects.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+4. **Framer**: A motion library for creating smooth animations and interactions.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+5. **Tailwind CSS**: A utility-first CSS framework for building modern web designs.
 
-### `npm run eject`
+## Project Structure
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The project structure follows a typical React application layout. Key folders and files include:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **src/components**: Contains reusable React components.
+- **src/pages**: Contains the main pages of the application.
+- **src/store**: Manages the Redux store and actions.
+- **src/styles**: Houses Tailwind CSS configuration and additional styling.
+- **public**: Holds the public assets and the HTML file.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Feel free to explore and customize the app based on your preferences. If you have any questions or suggestions, please reach out!
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+**Note**: Ensure you have Node.js and npm (or yarn) installed on your machine before running the application locally. If not, you can download them from [https://nodejs.org/](https://nodejs.org/).
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Happy video watching with GrooveTube!
