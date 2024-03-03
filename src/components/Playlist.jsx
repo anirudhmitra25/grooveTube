@@ -5,8 +5,9 @@ import { useEffect } from "react";
 import { Search } from "./Search";
 import { Reorder } from "framer-motion";
 import { PlayListItem } from "./PlayListItem";
+import { updatePlaylist } from "../store/actions";
 
-const Playlist = ({ playlist, currentVideo }) => {
+const Playlist = ({ playlist, currentVideo, updatePlaylist }) => {
   const [searchVal, setSearchVal] = useState("");
   const [data, setData] = useState([]);
 
@@ -21,6 +22,10 @@ const Playlist = ({ playlist, currentVideo }) => {
   useEffect(() => {
     setData(playlist);
   }, [playlist]);
+
+  function handleReorder(data) {
+    updatePlaylist(data);
+  }
 
   function onSearchChange(value) {
     let inputString = value.target.value;
@@ -39,7 +44,7 @@ const Playlist = ({ playlist, currentVideo }) => {
       </div>
       {data && (
         <div className="hover:scrollbar-thumb-sky-500 active:scrollbar-thumb-sky-400 h-32 scrollbar scrollbar-thumb-slate-700 scrollbar-track-slate-300 overflow-auto h-full p-6">
-          <Reorder.Group axis="y" values={data} onReorder={setData}>
+          <Reorder.Group axis="y" values={data} onReorder={handleReorder}>
             {data.map((video, index) => (
               <PlayListItem
                 key={video.id}
@@ -69,4 +74,8 @@ const mapStateToProps = (state) => ({
   currentVideo: state.currentVideo,
 });
 
-export default connect(mapStateToProps)(Playlist);
+const mapDispatchToProps = {
+  updatePlaylist,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Playlist);
