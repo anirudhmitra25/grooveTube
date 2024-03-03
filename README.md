@@ -57,3 +57,9 @@ Feel free to explore the app. If you have any questions or suggestions, please r
 **Note**: Ensure you have Node.js and npm (or yarn) installed on your machine before running the application locally. If not, you can download them from [https://nodejs.org/](https://nodejs.org/).
 
 Happy video watching with GrooveTube!
+
+
+## Lighthouse Report
+
+![Lighthouse Report](./public/lighthouse.png)
+
