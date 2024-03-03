@@ -1,6 +1,6 @@
 # GrooveTube - Video App
 
-Welcome to GrooveTube, a React-based video app that allows you to seamlessly enjoy and control your favorite videos. GrooveTube combines the power of React, Redux, React Icons, Framer, and Tailwind CSS to create a smooth and interactive video-watching experience.
+Welcome to GrooveTube, a React-based video app that allows you to seamlessly enjoy and control your favorite videos. GrooveTube combines the power of React, Redux, Framer, and Tailwind CSS to create a smooth and interactive video-watching experience.
 
 ## Website
 
