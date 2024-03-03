@@ -52,7 +52,7 @@ The project structure follows a typical React application layout. Key folders an
 - **src/styles**: Houses Tailwind CSS configuration and additional styling.
 - **public**: Holds the public assets and the HTML file.
 
-Feel free to explore and customize the app based on your preferences. If you have any questions or suggestions, please reach out!
+Feel free to explore the app. If you have any questions or suggestions, please reach out!
 
 **Note**: Ensure you have Node.js and npm (or yarn) installed on your machine before running the application locally. If not, you can download them from [https://nodejs.org/](https://nodejs.org/).
 
