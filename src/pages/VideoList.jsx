@@ -5,7 +5,7 @@ import { playVideo } from "../store/actions";
 
 const VideoList = ({ playlist }) => {
   return (
-    <div className="font-sans h-screen">
+    <section className="font-sans h-screen">
       <ul className="flex flex-wrap justify-between mx-auto w-3/4">
         {playlist &&
           playlist.map((video) => (
@@ -29,7 +29,7 @@ const VideoList = ({ playlist }) => {
             </li>
           ))}
       </ul>
-    </div>
+    </section>
   );
 };
 

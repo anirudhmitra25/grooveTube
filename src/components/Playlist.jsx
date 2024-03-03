@@ -7,11 +7,9 @@ import { Search } from "./Search";
 import { Reorder } from "framer-motion";
 import { PlayListItem } from "./PlayListItem";
 
-const Playlist = ({ playlist }) => {
+const Playlist = ({ playlist, currentVideo }) => {
   const [searchVal, setSearchVal] = useState("");
   const [data, setData] = useState([]);
-
-  const containerRef = useRef();
 
   let navigate = useNavigate();
 
@@ -40,17 +38,20 @@ const Playlist = ({ playlist }) => {
       <div className="px-6 mb-2">
         <Search onChange={onSearchChange} value={searchVal} />
       </div>
-      <div ref={containerRef} className="overflow-auto h-full p-6">
-        <Reorder.Group axis="y" values={playlist} onReorder={setData}>
-          {data.map((video, index) => (
-            <PlayListItem
-              video={video}
-              index={index}
-              handleVideoClick={handleVideoClick}
-            />
-          ))}
-        </Reorder.Group>
-      </div>
+      {data && (
+        <div className="hover:scrollbar-thumb-sky-500 active:scrollbar-thumb-sky-400 h-32 scrollbar scrollbar-thumb-slate-700 scrollbar-track-slate-300 overflow-auto h-full p-6">
+          <Reorder.Group axis="y" values={data} onReorder={setData}>
+            {data.map((video, index) => (
+              <PlayListItem
+                video={video}
+                index={index}
+                handleVideoClick={handleVideoClick}
+                currentVideoId={currentVideo.id}
+              />
+            ))}
+          </Reorder.Group>
+        </div>
+      )}
       <div
         className="bg-gradient-to-t from-neutral-900 from-opacity-90 from-30% via-opacity-80 via-neutral-900 via-20% to-transparent "
         style={{

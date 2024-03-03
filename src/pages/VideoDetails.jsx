@@ -5,29 +5,43 @@ import Player from "../components/Player";
 import { connect } from "react-redux";
 import { playVideo } from "../store/actions";
 import { Description } from "../components/Description";
+import { useNavigate } from "react-router-dom";
 
 const VideoDetails = ({ currentVideo, playVideo, playlist }) => {
   const { videoId } = useParams();
+  let navigate = useNavigate();
 
   useEffect(() => {
     const selectedVideo = playlist.filter((video) => video.id == videoId);
     playVideo(selectedVideo[0]);
   }, [videoId]);
 
+  const handleVideoEnd = () => {
+    const currentIndex = playlist.findIndex(
+      (video) => video.id === currentVideo.id
+    );
+
+    const nextIndex = (currentIndex + 1) % playlist.length;
+
+    const nextVideo = playlist[nextIndex];
+
+    navigate(`/video/${nextVideo.id}`);
+  };
+
   return (
-    <div className="font-sans h-screen flex mx-auto px-10 py-5 justify-center">
-      <div className="w-3/5">
-        <Player currentVideo={currentVideo} />
+    <section className="font-sans flex lg:flex-row h-max lg:h-full flex-col mx-auto px-10 py-5 justify-center">
+      <section className="w-full lg:w-5/6">
+        <Player currentVideo={currentVideo} onEnded={handleVideoEnd} />
         {currentVideo && (
-          <div className="-mt-5">
+          <section className="-mt-5">
             <Description currentVideo={currentVideo} />
-          </div>
+          </section>
         )}
-      </div>
-      <div className="w-1/5 h-4/5">
+      </section>
+      <section className="lg:h-4/5 my-5 lg:my-0">
         <Playlist />
-      </div>
-    </div>
+      </section>
+    </section>
   );
 };
 

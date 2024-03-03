@@ -1,29 +1,37 @@
 import React from "react";
 import { Reorder } from "framer-motion";
-import { IoIosReorder } from "react-icons/io";
 
-export const PlayListItem = ({ video, index, handleVideoClick }) => {
+export const PlayListItem = ({
+  video,
+  index,
+  handleVideoClick,
+  currentVideoId,
+}) => {
   return (
-    <Reorder.Item id={index} value={video}>
-      <ul className="playlist">
-        {/* <IoIosReorder className="w-10 h-10" color="white" /> */}
-        <li key={video.id}>
-          <div
-            onClick={() => handleVideoClick(video)}
-            className="mb-5 flex-col items-center text-center cursor-pointer"
-          >
-            <img
-              src={video.thumb}
-              alt={video.title}
-              className="max-w-64 h-32 min-w-48 object-cover rounded-lg mx-auto shadow-lg"
-            />
-            <div className="flex-col justify-content-center mt-2">
-              <p className="font-semibold text-neutral-100">{video.title}</p>
-              <p className="text-gray-300">{video.author}</p>
-            </div>
-          </div>
-        </li>
-      </ul>
+    <Reorder.Item id={video.id} value={video}>
+      <div
+        style={{}}
+        key={video.id}
+        onClick={() => handleVideoClick(video)}
+        className="relative mb-5 flex items-center cursor-pointer"
+      >
+        <img
+          src={video.thumb}
+          alt={video.title}
+          className={`max-w-64 h-32 min-w-48 object-cover rounded-lg shadow-lg ${
+            currentVideoId === video.id ? "opacity-50 " : ""
+          }`}
+        />
+        {currentVideoId === video.id && (
+          <span className="absolute text-sm font-semibold text-gray-200 bottom-0 mb-3 ml-2">
+            Currently Playing
+          </span>
+        )}
+        <div className="flex-col ml-3 self-start">
+          <p className="font-semibold text-neutral-100">{video.title}</p>
+          <p className="text-gray-300">{video.author}</p>
+        </div>
+      </div>
     </Reorder.Item>
   );
 };
