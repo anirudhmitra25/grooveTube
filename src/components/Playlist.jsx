@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { playVideo, updatePlaylist } from "../store/actions";
 import { useNavigate } from "react-router-dom";
-import { useRef, useEffect } from "react";
+import { useEffect } from "react";
 import { Search } from "./Search";
 import { Reorder } from "framer-motion";
 import { PlayListItem } from "./PlayListItem";
