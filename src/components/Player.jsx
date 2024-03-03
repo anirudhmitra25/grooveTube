@@ -81,8 +81,6 @@ const Player = ({ currentVideo, onEnded }) => {
         videoElement.play().catch((error) => console.log(error));
       };
 
-      videoElement.muted = muted;
-
       if (videoElement.readyState >= 3) {
         playVideo();
       } else {
