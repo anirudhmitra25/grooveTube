@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { playVideo } from "../store/actions";
 
 const VideoList = ({ playlist }) => {
   return (
@@ -35,11 +34,6 @@ const VideoList = ({ playlist }) => {
 
 const mapStateToProps = (state) => ({
   playlist: state.playlist,
-  currentVideo: state.currentVideo,
 });
 
-const mapDispatchToProps = {
-  playVideo,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(VideoList);
+export default connect(mapStateToProps)(VideoList);

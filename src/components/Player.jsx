@@ -4,7 +4,7 @@ import { FaRegPlayCircle } from "react-icons/fa";
 import { FaRegPauseCircle } from "react-icons/fa";
 import { MdOutlineReplay10 } from "react-icons/md";
 import { MdOutlineForward10 } from "react-icons/md";
-import { IoMdVolumeHigh } from "react-icons/io";
+import { IoMdVolumeHigh, IoMdVolumeMute } from "react-icons/io";
 import { MdFullscreen, MdFullscreenExit } from "react-icons/md";
 
 const Player = ({ currentVideo, onEnded }) => {
@@ -16,13 +16,83 @@ const Player = ({ currentVideo, onEnded }) => {
   const [isFullScreen, setIsFullScreen] = useState(false);
   const [volume, setVolume] = useState(1);
   const [showVolumeSlider, setShowVolumeSlider] = useState(false);
+  const [muted, setMuted] = useState(true);
 
   useEffect(() => {
-    if (videoRef && videoRef.current) {
-      videoRef.current.currentTime = 0;
+    const handleKeyDown = (event) => {
+      switch (event.code) {
+        case "Space":
+          handlePlayPause();
+          break;
+        case "ArrowLeft":
+          handleRewind();
+          break;
+        case "ArrowRight":
+          handleFastForward();
+          break;
+        case "KeyM":
+          handleMuteToggle();
+          break;
+        default:
+          break;
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
+  const handleMuteToggle = () => {
+    const videoElement = videoRef.current;
+    if (videoElement) {
+      videoElement.muted = !videoElement.muted;
     }
-    setProgress(0);
-    setSpeed(1);
+  };
+
+  useEffect(() => {
+    const videoElement = videoRef.current;
+    if (videoElement) {
+      if (autoPlay) {
+        videoElement.play().catch((error) => console.log(error));
+      } else {
+        videoElement.pause();
+      }
+    }
+  }, [autoPlay]);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.muted = muted;
+    }
+  }, [muted]);
+
+  useEffect(() => {
+    const videoElement = videoRef.current;
+    if (videoElement) {
+      videoElement.currentTime = 0;
+      setProgress(0);
+      setHoveredTime(null);
+      setVolume(1);
+
+      const playVideo = () => {
+        videoElement.play().catch((error) => console.log(error));
+      };
+
+      videoElement.muted = muted;
+
+      if (videoElement.readyState >= 3) {
+        playVideo();
+      } else {
+        videoElement.addEventListener("canplay", playVideo);
+      }
+
+      return () => {
+        videoElement.removeEventListener("canplay", playVideo);
+      };
+    }
   }, [currentVideo]);
 
   const handleVideoEnded = () => {
@@ -135,6 +205,7 @@ const Player = ({ currentVideo, onEnded }) => {
             width={"100%"}
             autoPlay={autoPlay}
             onEnded={handleVideoEnded}
+            muted
           >
             <source src={currentVideo.url} type="video/mp4" />
           </video>
@@ -228,15 +299,26 @@ const Player = ({ currentVideo, onEnded }) => {
                         <option value={2}>2x</option>
                       </select>
                     </div>
-                    <div className="relative top-1">
+                    <div
+                      className="relative top-1"
+                      onMouseEnter={() => setShowVolumeSlider(true)}
+                      onMouseLeave={() => setShowVolumeSlider(false)}
+                    >
                       <button
                         id="volume"
                         className="transition-all duration-100 ease-linear hover:scale-125"
                       >
-                        <IoMdVolumeHigh
-                          onClick={() => setShowVolumeSlider((prev) => !prev)}
-                          className="text-white text-xl sm:text-3xl"
-                        />
+                        {videoRef.current.muted ? (
+                          <IoMdVolumeMute
+                            onClick={() => setMuted(false)}
+                            className="text-white text-xl sm:text-3xl"
+                          />
+                        ) : (
+                          <IoMdVolumeHigh
+                            onClick={() => setMuted(true)}
+                            className="text-white text-xl sm:text-3xl"
+                          />
+                        )}
                       </button>
                       {showVolumeSlider && (
                         <div className="absolute bottom-16 transform -rotate-90 origin-bottom">

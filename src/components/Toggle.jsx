@@ -1,5 +1,5 @@
 import React from "react";
-import "./autoplay.css";
+import "./styles/autoplay.css";
 
 const ToggleButton = ({ autoPlay, setAutoPlay }) => {
   const toggleDotClass = autoPlay ? "active" : "";

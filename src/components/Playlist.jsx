@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { playVideo, updatePlaylist } from "../store/actions";
 import { useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 import { Search } from "./Search";
@@ -43,6 +42,7 @@ const Playlist = ({ playlist, currentVideo }) => {
           <Reorder.Group axis="y" values={data} onReorder={setData}>
             {data.map((video, index) => (
               <PlayListItem
+                key={video.id}
                 video={video}
                 index={index}
                 handleVideoClick={handleVideoClick}
@@ -69,9 +69,4 @@ const mapStateToProps = (state) => ({
   currentVideo: state.currentVideo,
 });
 
-const mapDispatchToProps = {
-  playVideo,
-  updatePlaylist,
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Playlist);
+export default connect(mapStateToProps)(Playlist);

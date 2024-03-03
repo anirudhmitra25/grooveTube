@@ -1,12 +1,7 @@
 import React from "react";
 import { Reorder } from "framer-motion";
 
-export const PlayListItem = ({
-  video,
-  index,
-  handleVideoClick,
-  currentVideoId,
-}) => {
+export const PlayListItem = ({ video, handleVideoClick, currentVideoId }) => {
   return (
     <Reorder.Item id={video.id} value={video}>
       <div
