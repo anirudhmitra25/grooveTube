@@ -4,7 +4,7 @@ Welcome to GrooveTube, a React-based video app that allows you to seamlessly enj
 
 ## Website
 
-[Visit GrooveTube](https://groovetube.netlify.app)
+[Visit GrooveTube](https://groove-tube.vercel.app/)
 
 ## Keyboard Shortcuts
 - Play/Pause: Spacebar
