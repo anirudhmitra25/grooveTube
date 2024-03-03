@@ -12,9 +12,11 @@ const VideoDetails = ({ currentVideo, playVideo, playlist }) => {
   let navigate = useNavigate();
 
   useEffect(() => {
-    const selectedVideo = playlist.filter((video) => video.id == videoId);
+    const selectedVideo = playlist.filter(
+      (video) => video.id === parseInt(videoId)
+    );
     playVideo(selectedVideo[0]);
-  }, [videoId]);
+  }, [videoId, playlist, playVideo]);
 
   const handleVideoEnd = () => {
     const currentIndex = playlist.findIndex(
