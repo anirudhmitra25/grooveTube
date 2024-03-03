@@ -6,6 +6,12 @@ Welcome to GrooveTube, a React-based video app that allows you to seamlessly enj
 
 [Visit GrooveTube](https://groovetube.netlify.app)
 
+## Keyboard Shortcuts
+- Play/Pause: Spacebar
+- Rewind 10 Seconds: Left Arrow
+- Fast Forward 10 Seconds: Right Arrow
+- Mute: m
+
 ## Local Setup
 
 Follow these steps to run GrooveTube locally on your machine:
